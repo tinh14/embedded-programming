@@ -28,7 +28,6 @@ void setup() {
     displayer.display(0, 0, "Nhiet do: ");
     displayer.display(0, 1, "Do am: ");
     displayer.display(0, 2, "Do am dat: ");
-
 }
 
 void loop() {

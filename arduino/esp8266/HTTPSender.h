@@ -2,7 +2,6 @@
 #define HTTP_SENDER_H
 
 #include <ESP8266HTTPClient.h>
-#include <ArduinoJson.h>
 
 class HTTPSender {
 public:
