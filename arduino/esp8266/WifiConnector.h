@@ -8,7 +8,6 @@ public:
     WiFiConnector();
     void connect(String ssid, String password);
     bool isConnected();
-    String getLocalIP();
 };
 
 WiFiConnector::WiFiConnector() {}
@@ -24,11 +23,6 @@ void WiFiConnector::connect(String ssid, String password) {
 
 bool WiFiConnector::isConnected() {
    return WiFi.status() == WL_CONNECTED;
-}
-
-String WiFiConnector::getLocalIP() {
-    IPAddress ip = WiFi.localIP();
-    return ip.toString();
 }
 
 #endif

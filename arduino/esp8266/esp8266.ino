@@ -23,5 +23,5 @@ void loop() {
       httpSender.send(sensorJsonData);
     }
     
-    delay(1000);
+    delay(3000);
 } 

@@ -12,14 +12,14 @@ public:
 private:
     String serverUrl;
     String defaultContentType = "application/json";
+    WiFiClient wifiClient;
 };
 
 HTTPSender::HTTPSender(String serverUrl) : serverUrl(serverUrl) {}
 
 void HTTPSender::send(String sensorJsonData) {
-
     HTTPClient http;
-    WiFiClient wifiClient;
+    
     http.begin(wifiClient, serverUrl);
     http.addHeader("Content-Type", defaultContentType);
     

@@ -48,5 +48,5 @@ void loop() {
     displayer.display(11, 1, displayedHum);
     displayer.display(11, 2, displayedSoi);
 
-    delay(5000);
+    delay(3000);
 }

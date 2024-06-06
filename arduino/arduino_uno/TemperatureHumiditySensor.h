@@ -16,15 +16,15 @@ private:
 TemperatureHumiditySensor::TemperatureHumiditySensor(int pin, int type) : dht(pin, type) {}
 
 void TemperatureHumiditySensor::begin() {
-  dht.begin();
+    dht.begin();
 }
 
 float TemperatureHumiditySensor::readTemperature() {
-  return dht.readTemperature();
+    return dht.readTemperature();
 }
 
 float TemperatureHumiditySensor::readHumidity() {
-  return dht.readHumidity();
+    return dht.readHumidity();
 }
 
 #endif
