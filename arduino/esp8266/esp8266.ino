@@ -18,7 +18,7 @@ void setup() {
 } 
  
 void loop() { 
-  if (Serial.available() > 0) {
+    if (Serial.available() > 0) {
       String sensorJsonData = Serial.readStringUntil('\n'); 
       httpSender.send(sensorJsonData);
     }
