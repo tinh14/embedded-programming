@@ -1,7 +1,8 @@
+#include <ArduinoJson.h>
+
 #include "TemperatureHumiditySensor.h"
 #include "SoilMoistureSensor.h"
 #include "Displayer.h"
-#include "../shared/SensorData.h"
 
 const unsigned long baudRate = 115200;
 
@@ -19,6 +20,9 @@ TemperatureHumiditySensor tths(dhtSensorPin, dhtType);
 SoilMoistureSensor sm(smsPin, smsPowerPin);
 Displayer displayer(displayerAddr, displayerCols, displayerRows);
 
+
+int i = 0;
+
 void setup() { 
     Serial.begin(baudRate);
     tths.begin();
@@ -35,10 +39,6 @@ void loop() {
     int hum = tths.readHumidity(); 
     int soil = sm.readMoisture(); 
 
-    SensorData sensorData(tem, hum, soil);
-    
-    Serial.println(sensorData.toJson());
-
     String displayedTemp = String(tem) + " C";
     String displayedHum = String(hum) + " %";
     String displayedSoi = String(soil) + " %";
@@ -46,6 +46,16 @@ void loop() {
     displayer.display(11, 0, displayedTemp);
     displayer.display(11, 1, displayedHum);
     displayer.display(11, 2, displayedSoi);
+
+    StaticJsonDocument<200> doc;
+    doc["temperature"] = tem;
+    doc["humidity"] = hum;
+    doc["soilMoisture"] = soil;
+
+    String sensorJsonData;
+    serializeJson(doc, sensorJsonData);
+
+    Serial.println(sensorJsonData);
 
     delay(3000);
 }

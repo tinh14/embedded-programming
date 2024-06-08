@@ -2,9 +2,9 @@
 #include "WiFiConnector.h"
 #include "HTTPSender.h"
 
-String ssid = "Unnamed"; 
-String password = "12345678"; 
-String serverUrl = "http://192.168.106.224:8080/api/v1/sensors";
+String ssid = "Chi Huy"; 
+String password = "999999999"; 
+String serverUrl = "http://192.168.1.101:8080/api/v1/sensors";
 
 const unsigned long baudRate = 115200;
 
@@ -17,8 +17,19 @@ void setup() {
 } 
  
 void loop() { 
-    if (Serial.available() > 0) {
-      String sensorJsonData = Serial.readStringUntil('\n'); 
+    String sensorJsonData = "";
+    bool received = false;
+
+    while (Serial.available() > 0) {
+      char incomingChar = Serial.read();
+      if (incomingChar == '\n') {
+        received = true;
+        break;
+      }
+      sensorJsonData += incomingChar;
+    }
+
+    if (received) {
       httpSender.send(sensorJsonData);
     }
     
