@@ -23,9 +23,12 @@ void SoilMoistureSensor::begin() {
 int SoilMoistureSensor::readMoisture() {
     digitalWrite(sensorPowerPin, HIGH);
     delay(10);
-    int val = analogRead(sensorPin);
+
+    int analogValue = analogRead(sensorPin);
+    int moisturePercentage = map(analogValue, 0, 1023, 0, 100);
+
     digitalWrite(sensorPowerPin, LOW);
-    return val;
+    return moisturePercentage;
 }
 
 #endif

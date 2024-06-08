@@ -41,7 +41,7 @@ void loop() {
 
     String displayedTemp = String(tem) + " C";
     String displayedHum = String(hum) + " %";
-    String displayedSoi = String(soil) + " W";
+    String displayedSoi = String(soil) + " %";
     
     displayer.display(11, 0, displayedTemp);
     displayer.display(11, 1, displayedHum);
