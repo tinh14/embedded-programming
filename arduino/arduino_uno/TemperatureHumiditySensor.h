@@ -3,6 +3,7 @@
 
 #include <DHT.h>
 
+// Lớp TemperatureHumiditySensor dùng để đọc dữ liệu từ cảm biến nhiệt độ, độ ẩm
 class TemperatureHumiditySensor {
 public:
     TemperatureHumiditySensor(int pin, int type);
@@ -15,15 +16,19 @@ private:
 
 TemperatureHumiditySensor::TemperatureHumiditySensor(int pin, int type) : dht(pin, type) {}
 
+// Khởi tạo cảm biến nhiệt độ, độ ẩm
 void TemperatureHumiditySensor::begin() {
+    // Khởi tạo cảm biến nhiệt độ, độ ẩm
     dht.begin();
 }
 
-float TemperatureHumiditySensor::readTemperature() {
+// Đọc dữ liệu từ cảm biến nhiệt độ
+int TemperatureHumiditySensor::readTemperature() {
     return dht.readTemperature();
 }
 
-float TemperatureHumiditySensor::readHumidity() {
+// Đọc dữ liệu từ cảm biến độ ẩm
+int TemperatureHumiditySensor::readHumidity() {
     return dht.readHumidity();
 }
 
