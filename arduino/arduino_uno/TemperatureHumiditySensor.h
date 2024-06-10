@@ -23,12 +23,12 @@ void TemperatureHumiditySensor::begin() {
 }
 
 // Đọc dữ liệu từ cảm biến nhiệt độ
-int TemperatureHumiditySensor::readTemperature() {
+float TemperatureHumiditySensor::readTemperature() {
     return dht.readTemperature();
 }
 
 // Đọc dữ liệu từ cảm biến độ ẩm
-int TemperatureHumiditySensor::readHumidity() {
+float TemperatureHumiditySensor::readHumidity() {
     return dht.readHumidity();
 }
 
