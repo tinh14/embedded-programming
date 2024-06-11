@@ -37,7 +37,7 @@ import {
 const TABLE_HEADER_CLASS = 'w-full flex px-0 justify-between md:text-xl';
 const TABLE_CELL_CLASS = 'text-left px-1 font-medium text-lg';
 
-const INTERVAL_TIME = 3000;
+const INTERVAL_TIME = 1000;
 
 export const columns: ColumnDef<SensorType>[] = [
     {
@@ -163,12 +163,12 @@ const Main = () => {
         columns,
         onSortingChange: setSorting,
         getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         state: {
             sorting,
         },
+
     });
 
     const handleFetchData = useCallback(async () => {
@@ -178,6 +178,7 @@ const Main = () => {
 
         const parse = SensorsSchema.safeParse(await res.json());
         if (parse.success) {
+            console.log(parse.data)
             setRows(parse.data);
         }
     }, []);
@@ -205,7 +206,7 @@ const Main = () => {
     }, [handleFetchData, handleFetchLatest]);
 
     return (
-        <main className="flex flex-col md:px-2 ">
+        <main className="flex flex-col md:px-2">
             <div className="flex flex-col w-full">
                 <div className="grid grid-rows-3 md:grid-rows-1 md:grid-cols-3 gap-3">
                     <div className="px-2 md:mb-2">
