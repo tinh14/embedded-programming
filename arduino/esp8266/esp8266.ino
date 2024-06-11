@@ -5,12 +5,12 @@
 // Số lượng bit được truyền trong 1 giây
 const unsigned long baudRate = 115200;
 
-// Khai báo các thông số cho kết nối WiFi và gửi dữ liệu
-String ssid = "Unnamed"; 
-String password = "12345678"; 
+// Khai báo các thông số cho kết nối WiFi
+String ssid = "DatG"; 
+String password = "Dattran1234"; 
 
 // Địa chỉ của server nhận dữ liệu
-String serverUrl = "http://192.168.106.224:8080/api/v1/sensors";
+String serverUrl = "http://192.168.144.224:8080/api/v1/sensors";
 
 // Khai báo các đối tượng kết nối WiFi và gửi yêu cầu HTTP 
 WiFiConnector wifiConnector;
