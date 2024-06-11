@@ -3,7 +3,7 @@
 
 #include <DHT.h>
 
-// Lớp TemperatureHumiditySensor dùng để đọc dữ liệu từ cảm biến nhiệt độ, độ ẩm
+// Lớp TemperatureHumiditySensor dùng để quản lý cảm biến nhiệt độ, độ ẩm
 class TemperatureHumiditySensor {
 public:
     TemperatureHumiditySensor(int pin, int type);

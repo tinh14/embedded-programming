@@ -3,7 +3,7 @@
 
 #include <ESP8266WiFi.h>
 
-// Lớp WiFiConnector dùng để kết nối ESP8266 với mạng WiFi
+// Lớp WiFiConnector dùng để quản lý việc kết nối với mạng WiFi
 class WiFiConnector {
 public:
     WiFiConnector();

@@ -6,11 +6,11 @@
 const unsigned long baudRate = 115200;
 
 // Khai báo các thông số cho kết nối WiFi và gửi dữ liệu
-String ssid = "Chi Huy"; 
-String password = "999999999"; 
+String ssid = "Unnamed"; 
+String password = "12345678"; 
 
 // Địa chỉ của server nhận dữ liệu
-String serverUrl = "http://192.168.1.101:8080/api/v1/sensors";
+String serverUrl = "http://192.168.106.224:8080/api/v1/sensors";
 
 // Khai báo các đối tượng kết nối WiFi và gửi yêu cầu HTTP 
 WiFiConnector wifiConnector;
@@ -24,29 +24,12 @@ void setup() {
 }
  
 void loop() { 
-    // Định nghĩa một biến lưu trữ dữ liệu được đọc từ cổng Serial
-    String sensorJsonData = "";
-    // Định nghĩa một biến kiểm tra xem đã nhận đủ dữ liệu chưa
-    bool received = false;
-
     // Kiểm tra xem dữ liệu có tồn tại trên cổng Serial không
-    while (Serial.available() > 0) {
-      // Đọc một ký tự từ cổng Serial
-      char incomingChar = Serial.read();
-      // Nếu ký tự đọc được là ký tự xuống dòng thì dừng việc đọc dữ liệu
-      if (incomingChar == '\n') {
-        received = true;
-        break;
-      }
-      // Nếu ký tự đọc được không phải là ký tự xuống dòng thì thêm vào chuỗi dữ liệu
-      sensorJsonData += incomingChar;
-    }
+    while (Serial.available() == 0){}
 
-    // Nếu đã nhận đủ dữ liệu thì gửi dữ liệu lên server
-    if (received) {
-      httpSender.send(sensorJsonData);
-    }
-    
-    // Đợi 3 giây trước khi gửi dữ liệu tiếp theo
-    delay(3000);
+    // Đọc dữ liệu từ cổng Serial
+    String sensorJsonData = Serial.readStringUntil('\n');
+
+    // Gửi dữ liệu lên server
+    httpSender.send(sensorJsonData);
 } 

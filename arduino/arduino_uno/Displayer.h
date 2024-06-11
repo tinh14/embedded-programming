@@ -3,13 +3,14 @@
 
 #include <LiquidCrystal_I2C.h>
 
-// Lớp Displayer dùng để hiển thị dữ liệu lên màn hình
+// Lớp Displayer dùng để quản lý màn hình hiển thị
 class Displayer {
 public:
     Displayer(int addr, int col, int rows);
     void begin();
     void display(int col, int row, String data);
 private:
+    // Sử dụng màn hình hiển thị LCD I2C
     LiquidCrystal_I2C lcd;
 };
 

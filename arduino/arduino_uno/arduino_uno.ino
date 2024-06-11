@@ -20,6 +20,9 @@ const int displayerAddr = 0x27;
 const int displayerCols = 20;
 const int displayerRows = 4;
 
+// Khởi tạo một đối tượng JSON
+StaticJsonDocument<1024> doc;
+
 // Khai báo các đối tượng cảm biến và màn hình hiển thị
 TemperatureHumiditySensor tths(dhtSensorPin, dhtType);
 SoilMoistureSensor sm(smsPin, smsPowerPin);
@@ -54,21 +57,16 @@ void loop() {
     displayer.display(11, 1, displayedHum);
     displayer.display(11, 2, displayedSoi);
 
-    // Khởi tạo một đối tượng JSON
-    StaticJsonDocument<200> doc;
     // Đưa dữ liệu cảm biến vào đối tượng JSON
     doc["temperature"] = tem;
     doc["humidity"] = hum;
     doc["soilMoisture"] = soil;
 
-    // Khai báo một chuỗi để lưu trữ dữ liệu JSON
-    String sensorJsonData;
-    // Chuyển đối tượng JSON thành chuỗi JSON
-    serializeJson(doc, sensorJsonData);
-
     // Truyền dữ liệu JSON qua cổng Serial
-    Serial.println(sensorJsonData);
+    serializeJson(doc, Serial);
+    // Truyền ký tự xuống dòng để phân biệt giữa các lần truyền dữ liệu
+    Serial.println();
 
-    // Đợi 3 giây cho lần truyền dữ liệu tiếp theo
-    delay(3000);
+    // Đợi 1 giây cho lần truyền dữ liệu tiếp theo
+    delay(1000);
 }

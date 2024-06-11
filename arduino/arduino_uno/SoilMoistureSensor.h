@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-// Lớp SoilMoistureSensor dùng để đọc dữ liệu từ cảm biến độ ẩm đất
+// Lớp SoilMoistureSensor dùng để quản lý cảm biến độ ẩm đất
 class SoilMoistureSensor {
 public:
     SoilMoistureSensor(int sensorPin, int sensorPowerPin);
@@ -39,6 +39,7 @@ int SoilMoistureSensor::readMoisture() {
     // Tắt nguồn điện cho cảm biến
     digitalWrite(sensorPowerPin, LOW);
 
+    // Trả về giá trị phần trăm độ ẩm
     return moisturePercentage;
 }
 
