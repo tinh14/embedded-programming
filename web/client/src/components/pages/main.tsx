@@ -37,7 +37,7 @@ import {
 const TABLE_HEADER_CLASS = 'w-full flex px-0 justify-between md:text-xl';
 const TABLE_CELL_CLASS = 'text-left px-1 font-medium text-lg';
 
-const INTERVAL_TIME = 1000;
+const INTERVAL_TIME = 800;
 
 export const columns: ColumnDef<SensorType>[] = [
     {
